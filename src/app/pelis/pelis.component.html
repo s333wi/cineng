@@ -1,0 +1,16 @@
+<div class="row">
+  <h2>Pel·lícules</h2>
+  <button
+    class="btn btn-primary w-100 mb-2"
+    *ngFor="let film of films"
+    (click)="showDetails(film)"
+  >
+    {{ film.title }}
+  </button>
+</div>
+<div class="row">
+  <app-peli-details
+    [film]="filmSelected"
+    [ngClass]="filmSelected ? 'd-block' : 'd-none'"
+  ></app-peli-details>
+</div>
