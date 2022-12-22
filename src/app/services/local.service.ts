@@ -13,7 +13,7 @@ export class LocalService {
   }
 
   public getData(key: string){
-    console.log( JSON.parse(localStorage.getItem(key) || '{}'));
+    return JSON.parse(localStorage.getItem(key) || '{}');
   }
   public removeData(key: string) {
     localStorage.removeItem(key);

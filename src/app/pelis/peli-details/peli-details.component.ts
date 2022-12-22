@@ -20,7 +20,7 @@ export class PeliDetailsComponent implements OnInit {
 
   buyTicket(): void {
     let cines:any = this.localStore.getData('cines');
-    console.log({cines});
+    let cine = cines.find((cine:any) => cine.id === this.film.cine_id);
     if (this.film.current_capacity < this.film.total_capacity) {
       this.film.current_capacity += 1;
     } else {
