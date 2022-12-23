@@ -49,11 +49,14 @@ export class AppComponent {
       ],
     },
   ];
-  films?: any;
+  films?: any = this.localStore.getData('cines');
 
   constructor(private localStore: LocalService) {}
 
   showFilms(cine: any): void {
+    document.getElementById('movies')?.classList.add('d-block');
+    document.getElementById('movies')?.classList.remove('d-none');
+
     this.films = cine.films;
   }
 
@@ -63,7 +66,9 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
-    this.localStore.saveData('cines', JSON.stringify(this.cines));
+    if (this.films === null) {
+      this.localStore.saveData('cines', JSON.stringify(this.cines));
+    }
     this.getCines();
   }
 }

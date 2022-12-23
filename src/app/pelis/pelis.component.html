@@ -1,7 +1,8 @@
-<div class="row">
+<div class="row d-none" id="movies">
   <h2>Pel·lícules</h2>
   <button
-    class="btn btn-primary w-100 mb-2"
+    class="btn w-100 mb-2 "
+    [ngClass]="film.current_capacity < film.total_capacity ? 'btn-primary' : 'btn-danger' "
     *ngFor="let film of films"
     (click)="showDetails(film)"
   >
@@ -11,6 +12,7 @@
 <div class="row">
   <app-peli-details
     [film]="filmSelected"
-    [ngClass]="filmSelected ? 'd-block' : 'd-none'"
+    [ngClass]="filmSelected && filmSelected.current_capacity < filmSelected.total_capacity ? 'd-block' : 'd-none'"
+    (buyTicket)="buyTicket($event)"
   ></app-peli-details>
 </div>

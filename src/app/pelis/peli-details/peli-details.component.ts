@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { LocalService } from 'src/app/services/local.service';
 
 @Component({
   selector: 'app-peli-details',
@@ -8,23 +7,18 @@ import { LocalService } from 'src/app/services/local.service';
 })
 export class PeliDetailsComponent implements OnInit {
   @Input() film: any;
-  @Output() getDetails: EventEmitter<string>;
+  @Output() buyTicket: EventEmitter<any> = new EventEmitter();
 
-  constructor(private localStore: LocalService) {
-    this.film = undefined;
-    this.getDetails = new EventEmitter<string>();
+  constructor() {
+    this.buyTicket = new EventEmitter<any>();
   }
 
   ngOnInit(): void {
+    this.film="";
+
   }
 
-  buyTicket(): void {
-    let cines:any = this.localStore.getData('cines');
-    let cine = cines.find((cine:any) => cine.id === this.film.cine_id);
-    if (this.film.current_capacity < this.film.total_capacity) {
-      this.film.current_capacity += 1;
-    } else {
-      return;
-    }
+  buyTicketFilm(): void {
+      this.buyTicket.emit(this.film);
   }
 }

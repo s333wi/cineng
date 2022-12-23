@@ -1,9 +1,10 @@
-<div class="row border-top pt-5 w-100"  >
+<div class="row border-top pt-5 w-100">
   <div class="card">
     <div class="card-body text-center">
-      <h5 class="card-title"></h5>
-      <p class="card-text"></p>
-      <button class="btn btn-primary w-100" (click)="buyTicket()">
+      <h5 class="card-title">{{film.title}}</h5>
+      <p class="card-text">{{film.description}}</p>
+      <p class="card-text">Capacitat: {{film.current_capacity}}/{{film.total_capacity}}</p>
+      <button class="btn btn-primary w-100" (click)="buyTicketFilm()">
       Comprar entrada</button>
     </div>
   </div>
