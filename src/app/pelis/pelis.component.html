@@ -1,18 +1,20 @@
 <div class="row d-none" id="movies">
   <h2>Pel·lícules</h2>
   <button
-    class="btn w-100 mb-2 "
-    [ngClass]="film.current_capacity < film.total_capacity ? 'btn-primary' : 'btn-danger' "
+    class="btn w-100 mb-2"
+    [ngClass]="film.current_capacity < film.total_capacity ? 'btn-primary' : 'btn-danger'"
     *ngFor="let film of films"
     (click)="showDetails(film)"
   >
     {{ film.title }}
   </button>
 </div>
-<div class="row">
-  <app-peli-details
-    [film]="filmSelected"
-    [ngClass]="filmSelected && filmSelected.current_capacity < filmSelected.total_capacity ? 'd-block' : 'd-none'"
-    (buyTicket)="buyTicket($event)"
-  ></app-peli-details>
-</div>
+<app-peli-details
+class="row d-flex w-100"
+  [film]="filmSelected"
+  [ngClass]="
+    filmSelected && filmSelected.current_capacity < filmSelected.total_capacity
+      ? 'd-block'
+      : 'd-none' "
+  (buyTicket)="buyTicket($event)"
+></app-peli-details>

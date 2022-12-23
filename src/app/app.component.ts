@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { CINES } from './mock-cine';
 import { LocalService } from './services/local.service';
 
 @Component({
@@ -56,13 +55,13 @@ export class AppComponent {
   showFilms(cine: any): void {
     document.getElementById('movies')?.classList.add('d-block');
     document.getElementById('movies')?.classList.remove('d-none');
+    document.querySelector('.cinemes')?.classList.add('border-end');
 
     this.films = cine.films;
   }
 
   getCines(): void {
     this.cines = this.localStore.getData('cines');
-    console.log(this.cines);
   }
 
   ngOnInit(): void {
