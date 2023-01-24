@@ -4,12 +4,13 @@
     <button
       class="btn btn-primary w-100 mb-2"
       *ngFor="let cine of cines"
-      (click)="showFilms(cine)"
-    >
+      (click)="showFilms(cine)">
       {{ cine.name }}
     </button>
   </div>
   <div class="col-md-6 p-5">
-      <app-pelis [films]="films" [ngClass]=" (films) ? 'd-block' : 'd-none' " ></app-pelis>
+    <app-pelis *ngIf="filmSelected" [films]="films" [ngClass]=" (filmSelected) ?
+      'd-block' : 'd-none' "></app-pelis>
   </div>
 </div>
+<!-- todo: fer desapareixer pelis details -->

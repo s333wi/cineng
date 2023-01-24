@@ -7,6 +7,7 @@ import { LocalService } from '../services/local.service';
   styleUrls: ['./pelis.component.css'],
 })
 export class PelisComponent implements OnInit {
+
   @Input() films: any;
   constructor(private localStore: LocalService) {}
 

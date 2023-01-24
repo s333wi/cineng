@@ -7,6 +7,7 @@ import { LocalService } from './services/local.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  filmSelected:boolean = false;
   title = 'cine';
   cines?: any = [
     {
@@ -53,21 +54,18 @@ export class AppComponent {
   constructor(private localStore: LocalService) {}
 
   showFilms(cine: any): void {
-    document.getElementById('movies')?.classList.add('d-block');
-    document.getElementById('movies')?.classList.remove('d-none');
+    this.filmSelected=true;
+    console.log(this.filmSelected);
+    // document.getElementById('movies')?.classList.add('d-block');
+    // document.getElementById('movies')?.classList.remove('d-none');
     document.querySelector('.cinemes')?.classList.add('border-end');
-
     this.films = cine.films;
-  }
-
-  getCines(): void {
-    this.cines = this.localStore.getData('cines');
   }
 
   ngOnInit(): void {
     if (this.films === null) {
       this.localStore.saveData('cines', JSON.stringify(this.cines));
     }
-    this.getCines();
+    this.cines = this.localStore.getData('cines');
   }
 }

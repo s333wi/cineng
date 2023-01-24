@@ -6,7 +6,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./peli-details.component.css'],
 })
 export class PeliDetailsComponent implements OnInit {
-  @Input() film: any;
+  @Input() film: any = "";
   @Output() buyTicket: EventEmitter<any> = new EventEmitter();
 
   constructor() {
@@ -14,8 +14,6 @@ export class PeliDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.film="";
-
   }
 
   buyTicketFilm(): void {
